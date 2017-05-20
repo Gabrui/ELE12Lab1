@@ -1,4 +1,10 @@
 /* global math */
+function somarSeNegativo(incremento, numero) {
+    if (numero < 0) {
+        return numero + incremento;
+    }
+    return numero;
+}
 
 function calcular() {
     var u0 = 4 * math.pi * math.pow(10, -7);
@@ -27,23 +33,17 @@ function calcular() {
     var t1 = (-B + math.sqrt(delta))/(2*A);
     var t2 = (-B - math.sqrt(delta))/(2*A);
     var lambda = 1/(math.sqrt(urel*u0*e0)*freq);
-    var x1 = lambda * math.atan(t1/(2*math.pi));
-    var x2 = lambda * math.atan(t2/(2*math.pi));
+    var x1 = somarSeNegativo(lambda/2, lambda * math.atan(t1/(2*math.pi)));
+    var x2 = somarSeNegativo(lambda/2, lambda * math.atan(t2/(2*math.pi)));
     
-    if (x1 < 0) {
-        x1 += lambda/2;
-    }
-    if (x2 < 0) {
-        x2 += lambda/2;
-    }
     
     var Imy1 = ((b+t1)*(1-b*t1)-t1*a*a)/((1-b*t1)*(1-b*t1)+(t1*a)*(t1*a));
     var Imy2 = ((b+t2)*(1-b*t2)-t2*a*a)/((1-b*t2)*(1-b*t2)+(t2*a)*(t2*a));
     
-    var comp1aberto = math.atan(Imy1)*lambda/(2*math.pi);
-    var comp1curto = math.atan(-1/Imy1)*lambda/(2*math.pi);
-    var comp2aberto = math.atan(Imy2)*lambda/(2*math.pi);
-    var comp2curto = math.atan(-1/Imy2)*lambda/(2*math.pi);
+    var comp1aberto = somarSeNegativo(lambda/2, math.atan(Imy1)*lambda/(2*math.pi));
+    var comp1curto = somarSeNegativo(lambda/2, math.atan(-1/Imy1)*lambda/(2*math.pi));
+    var comp2aberto = somarSeNegativo(lambda/2, math.atan(Imy2)*lambda/(2*math.pi));
+    var comp2curto = somarSeNegativo(lambda/2, math.atan(-1/Imy2)*lambda/(2*math.pi));
         
     var texto = "";
     
