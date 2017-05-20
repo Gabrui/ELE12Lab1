@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+    
+<head>
+    <title>Lab1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="math.js" type="text/javascript"></script>
+    <script src="codigo.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+    
+
+<body>
+<h1> Lab 1 - ELE-12 - Casamento de impedância com toco simples</h1>        
+<form id="entradas" action="">
+  <table>
+      <tr>
+        <td>Z0</td> 
+        <td><input type="number" name="ReZ0" step="any" value="50"> <!--+ j <input type="number" name="ImZ0" step="any" value="0">--></td>
+      </tr>
+      <tr>
+        <td>ZL</td> 
+        <td><input type="number" name="ReZL" step="any" value="80"> + j <input type="number" name="ImZL" step="any" value="30"></td>
+      </tr>
+      <tr>
+        <td>Frequência de Casamento (MHz)</td> 
+        <td><input type="number" name="freq" step="any" value="800"></td>
+      </tr>
+      <tr>
+        <td>Urel</td> 
+        <td><input type="number" name="urel" step="any" value="1"></td>
+      </tr>
+      <tr>
+        <td>BW de operação (MHz)</td> 
+        <td><input type="number" name="bw" step="any" value="50"></td>
+      </tr>
+    </table>
+</form>
+
+<p>Clique em calcular para obter as respostas.</p>
+
+<button onclick="calcular()">Calcular</button>
+
+<div id="respostas"></div>
+
+
+</body>
+</html>
