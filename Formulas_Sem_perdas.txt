@@ -21,8 +21,8 @@ em curto =>  NovoyToco = -cotg(2*pi*l*f*sqrt(m0*e))j
 
 t = tg(2*pi*x*f*sqrt(m0*e))
 y(x) = ((NovoyTocoj+t)(1-NovoyTocoj*t)j)/(1-NovoyTocoj*t)^2 = Re + Imj
- Re = (-NovoyToco*t^2-NovoyToco + N^3t^4 - 3N^3t^2)/(1+6N^2t^2+N^4t^4)
- Im = (t+3N^2t^3+3N^2t + N^4t^3)/(1+6N^2t^2+N^4t^4)
+ Re = (-NovoyToco*t^2-NovoyToco+NovoyToco^3t^4 - 3NovoyToco^3t^2)/(1+6NovoyToco^2t^2+NovoyToco^4t^4)
+ Im = (t+3NovoyToco^2t^3+3NovoyToco^2t + NovoyToco^4t^3)/(1+6NovoyToco^2t^2+NovoyToco^4t^4)
 yLf = yL + y(x) = (a + Re) + (b + Im)j
 |R| = |1-yLf|/|1+yLf| = sqrt((1-a-Re)^2 + (b+Im)^2)/sqrt((1+a+Re)^2 + (b+Im)^2)
 Vswr = (1 + |R|)/(1-|R|)
