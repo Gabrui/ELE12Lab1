@@ -23,13 +23,10 @@ function calcularModR(a,b,NyT,x,f,u,e){
     var t2 = t*t;
     var t3 = t2*t;
     var t4 = t2*t2;
-    var NyT2 = NyT*NyT;
-    var NyT3 = NyT2*NyT;
-    var NyT4 = NyT2*NyT2;
-    var Rey = (-NyT*t2-NyT+NyT3*t4-3*NyT3*t2)/(1+6*NyT2*t2+NyT4*t4);
-    var Imy = (t+3*NyT2*t3+3*NyT2*t+NyT4*t3)/(1+6*NyT2*t2+NyT4*t4);
-    var ReyLf = (a+ Rey);
-    var ImyLf = (b+Imy);
+    var Rey = (a - a*b*t + t*a*(b+t))/((1-b*t)*(1-b*t)+(t*a)*(t*a));
+    var Imy = (-t*a*a+(b+t)*(1-b*t))/((1-b*t)*(1-b*t)+(t*a)*(t*a));
+    var ReyLf = (Rey);
+    var ImyLf = (-NyT+Imy);
     var num2 = (1-ReyLf)*(1-ReyLf) + (ImyLf)*(ImyLf);
     var dem2 = (1+ReyLf)*(1+ReyLf) + (ImyLf)*(ImyLf);
     return math.sqrt(num2/dem2);
