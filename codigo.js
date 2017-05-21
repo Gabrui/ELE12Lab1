@@ -6,6 +6,42 @@ function somarSeNegativo(incremento, numero) {
     return numero;
 }
 
+function calcularNovoyToco(aberto, l, f, u,e){
+    
+    if (aberto){
+        return math.tan(2*math.pi*l*f*math.sqrt(u*e));
+    }
+    else{
+        
+        return -1*math.cotan(2*math.pi*l*f*math.sqrt(u*e));
+    }
+}
+
+function calcularModR(a,b,NyT,x,f,u,e){
+    
+    var t = math.tan(2*math.pi*x*f*math.sqrt(u*e));
+    var t2 = t*t;
+    var t3 = t2*t;
+    var t4 = t2*t2;
+    var NyT2 = NyT*NyT;
+    var NyT3 = NyT2*NyT;
+    var NyT4 = NyT2*NyT2;
+    var Rey = (-NyT*t2-NyT+NyT3*t4-3*NyT3*t2)/(1+6*NyT2*t2+NyT4*t4);
+    var Imy = (t+3*NyT2*t3+3*NyT2*t+NyT4*t3)/(1+6*NyT2*t2+NyT4*t4);
+    var ReyLf = (a+ Rey);
+    var ImyLf = (b+Imy);
+    var num2 = (1-ReyLf)*(1-ReyLf) + (ImyLf)*(ImyLf);
+    var dem2 = (1+ReyLf)*(1+ReyLf) + (ImyLf)*(ImyLf);
+    return math.sqrt(num2/dem2);
+}
+
+function calcularVswr(R){
+    
+    return (1+R)/(1-R); 
+    
+}
+
+
 function calcular() {
     var u0 = 4 * math.pi * math.pow(10, -7);
     var e0 = 8.8541878176 * math.pow(10, -12);
@@ -18,7 +54,7 @@ function calcular() {
     var ZL = math.complex(ReZL, ImZL);
     var freq = document.getElementsByName("freq")[0].value * math.pow(10, 6);
     var urel = document.getElementsByName("urel")[0].value;
-    var bw   = document.getElementsByName("bw")  [0].value;
+    var bw   = document.getElementsByName("bw")  [0].value * math.pow(10,6);
     
     var ZLNorm = math.divide(ZL, Z0);
     var YLNorm = math.divide(1, ZLNorm);
@@ -44,7 +80,38 @@ function calcular() {
     var comp1curto = somarSeNegativo(lambda/2, math.atan(-1/Imy1)*lambda/(2*math.pi));
     var comp2aberto = somarSeNegativo(lambda/2, math.atan(Imy2)*lambda/(2*math.pi));
     var comp2curto = somarSeNegativo(lambda/2, math.atan(-1/Imy2)*lambda/(2*math.pi));
-        
+    
+    var fmax = freq + bw;
+    var fmin = freq - bw;
+    var NyTaberto1max = calcularNovoyToco(true,comp1aberto,fmax,u0,e0);
+    var NyTaberto2max = calcularNovoyToco(true,comp2aberto,fmax,u0,e0);
+    var NyTcurto1max = calcularNovoyToco(false,comp1curto,fmax,u0,e0);
+    var NyTcurto2max = calcularNovoyToco(false,comp2curto,fmax,u0,e0);
+    var NyTaberto1min = calcularNovoyToco(true,comp1aberto,fmin,u0,e0);
+    var NyTaberto2min = calcularNovoyToco(true,comp2aberto,fmin,u0,e0);
+    var NyTcurto1min = calcularNovoyToco(false,comp1curto,fmin,u0,e0);
+    var NyTcurto2min = calcularNovoyToco(false,comp2curto,fmin,u0,e0);
+    
+    var R1abertomax = calcularModR(a,b,NyTaberto1max,x1,fmax,u0,e0);
+    var R2abertomax = calcularModR(a,b,NyTaberto2max,x2,fmax,u0,e0);
+    var R1abertomin = calcularModR(a,b,NyTaberto1min,x1,fmin,u0,e0);
+    var R2abertomin = calcularModR(a,b,NyTaberto2min,x2,fmin,u0,e0);
+    
+    var R1curtomax = calcularModR(a,b,NyTcurto1max,x1,fmax,u0,e0);
+    var R2curtomax = calcularModR(a,b,NyTcurto2max,x2,fmax,u0,e0);
+    var R1curtomin = calcularModR(a,b,NyTcurto1min,x1,fmin,u0,e0);
+    var R2curtomin = calcularModR(a,b,NyTcurto2min,x2,fmin,u0,e0);
+    
+    var Vswr1abertomax = calcularVswr(R1abertomax);
+    var Vswr2abertomax = calcularVswr(R2abertomax);
+    var Vswr1abertomin = calcularVswr(R1abertomin);
+    var Vswr2abertomin = calcularVswr(R2abertomin);
+    
+    var Vswr1curtomax = calcularVswr(R1curtomax);
+    var Vswr2curtomax = calcularVswr(R2curtomax);
+    var Vswr1curtomin = calcularVswr(R1curtomin);
+    var Vswr2curtomin = calcularVswr(R2curtomin);
+    
     var texto = "";
     
     texto += "<table>";
