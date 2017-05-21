@@ -33,8 +33,8 @@ function calcular() {
     var t1 = (-B + math.sqrt(delta))/(2*A);
     var t2 = (-B - math.sqrt(delta))/(2*A);
     var lambda = 1/(math.sqrt(urel*u0*e0)*freq);
-    var x1 = somarSeNegativo(lambda/2, lambda * math.atan(t1/(2*math.pi)));
-    var x2 = somarSeNegativo(lambda/2, lambda * math.atan(t2/(2*math.pi)));
+    var x1 = somarSeNegativo(lambda/2, lambda * math.atan(t1)/(2*math.pi));
+    var x2 = somarSeNegativo(lambda/2, lambda * math.atan(t2)/(2*math.pi));
     
     
     var Imy1 = ((b+t1)*(1-b*t1)-t1*a*a)/((1-b*t1)*(1-b*t1)+(t1*a)*(t1*a));
