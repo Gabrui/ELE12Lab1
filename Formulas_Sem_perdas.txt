@@ -1,0 +1,30 @@
+ZL = c + dj, Z0
+yL = a + bj
+a =Z0*c/(c^2+d^2), b = -Z0*d/(c^2+d^2)
+y(x) = (a -abt + ta(b+t) - ta^2j + (b+t)(1-bt)j)/((1-bt)^2+(ta)^2)
+(a^2+b^2-a)t - 2bt + 1-a = 0
+A = a^2+b^2-a
+B = -2b
+C = 1-a
+delta = B^2 - 4AC
+t = (-B +- sqrt(delta))/(2A)
+x = lambda * atan(t)/(2*pi)
+lambda = 1/(sqrt(m0*e)*f)
+e = er*e0
+Imy = ((b+t)*(1-bt)-ta^2)/((1-bt)^2+(ta)^2)
+
+em aberto => yl = 0 => Imy = tg(beta * l) => l = atan(Imy)*lambda/(2*pi)
+em curto => y1 -> 00 => Imy = -cotg(beta*l) => l = acotan(Imy-)*lambda/(2*pi)
+
+em aberto => NovoyToco = tg(2*pi*l*f*sqrt(m0*e))j
+em curto =>  NovoyToco = -cotg(2*pi*l*f*sqrt(m0*e))j
+
+t = tg(2*pi*x*f*sqrt(m0*e))
+y(x) = ((NovoyTocoj+t)(1-NovoyTocoj*t)j)/(1-NovoyTocoj*t)^2 = Re + Imj
+ Re = (-NovoyToco*t^2-NovoyToco + N^3t^4 - 3N^3t^2)/(1+6N^2t^2+N^4t^4)
+ Im = (t+3N^2t^3+3N^2t + N^4t^3)/(1+6N^2t^2+N^4t^4)
+yLf = yL + y(x) = (a + Re) + (b + Im)j
+|R| = |1-yLf|/|1+yLf| = sqrt((1-a-Re)^2 + (b+Im)^2)/sqrt((1+a+Re)^2 + (b+Im)^2)
+Vswr = (1 + |R|)/(1-|R|)
+
+
