@@ -13,7 +13,7 @@ function calcularNovoyToco(aberto, l, f, u,e){
     }
     else{
         
-        return -1*math.cotan(2*math.pi*l*f*math.sqrt(u*e));
+        return -1*math.cot(2*math.pi*l*f*math.sqrt(u*e));
     }
 }
 
