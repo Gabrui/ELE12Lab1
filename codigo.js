@@ -1,4 +1,13 @@
-/* global math */
+//UTILIZA A BIBLIOTECA math.js para o cálculo com números complexos
+
+/* global math, carta */
+
+/**
+ * @function somarSeNegativo Soma um incremento a um número se este for negativo
+ * @param {Number} incremento Soma esse incremento ao número
+ * @param {Number} numero Número a ser analisado se negativo
+ * @returns {Number} Resultado da operação de soma, se numero for negativo
+ */
 function somarSeNegativo(incremento, numero) {
     if (numero < 0) {
         return numero + incremento;
@@ -6,19 +15,38 @@ function somarSeNegativo(incremento, numero) {
     return numero;
 }
 
-function calcularNovoyToco(aberto, l, f, u,e){
-    
+
+/**
+ * 
+ * @param {Number} aberto
+ * @param {Number} l
+ * @param {Number} f
+ * @param {Number} u
+ * @param {Number} e
+ * @returns {Number}
+ */
+function calcularNovoyToco(aberto, l, f, u,e) {
     if (aberto){
         return math.tan(2*math.pi*l*f*math.sqrt(u*e));
     }
     else{
-        
         return -1*math.cot(2*math.pi*l*f*math.sqrt(u*e));
     }
 }
 
+
+/**
+ * 
+ * @param {Number} a
+ * @param {Number} b
+ * @param {Number} NyT
+ * @param {Number} x
+ * @param {Number} f
+ * @param {Number} u
+ * @param {Number} e
+ * @returns {Number}
+ */
 function calcularModR(a,b,NyT,x,f,u,e){
-    
     var t = math.tan(2*math.pi*x*f*math.sqrt(u*e));
     var t2 = t*t;
     var t3 = t2*t;
@@ -32,10 +60,24 @@ function calcularModR(a,b,NyT,x,f,u,e){
     return math.sqrt(num2/dem2);
 }
 
-function calcularVswr(R){
-    
+
+/**
+ * @function calcularVswr Retorna o VSWR a partir do coeficiente de reflexão
+ * @param {Number} R Módulo do coeficiente de Reflexão
+ * @returns {Number} VSWR calculado
+ */
+function calcularVswr(R) {
     return (1+R)/(1-R); 
-    
+}
+
+
+/**
+ * 
+ * @param {math.complex} zlComplexo O
+ * @returns {math.complex} O coeficiente de reflexão complexo
+ */
+function calcularReflexao(zlComplexo) {
+    return math.divide(math.add(1, zlComplexo), math.subtract(1, zlComplexo));
 }
 
 
@@ -122,4 +164,8 @@ function calcular() {
     texto +="<tr><td>Vswr em curto para frequencia minima</td><td>"+Vswr1curtomin.toExponential(4)+" m ou "+Vswr2curtomin.toExponential(4) + "</td></tr>";
     texto += "</table>";
     document.getElementById("respostas").innerHTML = texto;
+    
+    carta.iniciar(648, 649, 1196-648, "desenho", "fundo");
+    carta.desenharPontozNorm(ZLNorm, "ZL");
 }
+
