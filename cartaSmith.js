@@ -80,7 +80,6 @@ CartaSmith = function () {
         //parte dele, utilizando um passo fixo
     };
     
-    this.reiniciar();
 };
 
 
