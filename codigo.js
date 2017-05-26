@@ -77,7 +77,7 @@ function calcularVswr(R) {
  * @returns {math.complex} O coeficiente de reflexão complexo
  */
 function calcularReflexao(zlComplexo) {
-    return math.divide(math.add(1, zlComplexo), math.subtract(1, zlComplexo));
+    return math.divide(math.subtract(zlComplexo, Z0), math.add(Z0, zlComplexo));
 }
 
 
@@ -87,7 +87,7 @@ function calcular() {
     
     var ReZ0 = document.getElementsByName("ReZ0")[0].value;
     var ImZ0 = 0;//document.getElementsByName("ImZ0")[0].value;
-    var Z0 = math.complex(ReZ0, ImZ0);
+    Z0 = math.complex(ReZ0, ImZ0);
     var ReZL = document.getElementsByName("ReZL")[0].value;
     var ImZL = document.getElementsByName("ImZL")[0].value;
     var ZL = math.complex(ReZL, ImZL);

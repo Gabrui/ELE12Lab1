@@ -15,9 +15,9 @@ CartaSmith = function () {
      * @param {string} fundo O ID da imagem de fundo do html
      */
     this.iniciar = function(cx, cy, r, desenho, fundo) {
-        this.cx = cx;
-        this.cy = cy;
-        this.r = r;
+        this.cx = cx; ///< Posição x do centro da figura
+        this.cy = cy; ///< Posição y do centro da figura
+        this.r = r;   ///< Raio da carta de smith da figura
         this.desenho = document.getElementById(desenho).getContext("2d");
         this.fundo = document.getElementById(fundo);
         this.apagar();
@@ -50,9 +50,8 @@ CartaSmith = function () {
      * @param {math.complex} reflexaoComplexo Coeficiente de reflexão
      */
     this.desenharR = function(reflexaoComplexo) {
-        var formaPolar = reflexaoComplexo.toPolar();
-        var raio = formaPolar.r;
-        var phi = formaPolar.phi;
+        var x = reflexaoComplexo.re*this.r + this.cx; ///< Posição x na figura
+        var y = reflexaoComplexo.im*this.r + this.cy; ///< Posição y na figura
         //IMPLEMENTAR O RESTO
     };
     
