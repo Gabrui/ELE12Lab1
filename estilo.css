@@ -13,3 +13,6 @@ td:nth-child(2) {
 table {
     margin: auto;
 }
+h1 {
+font-family: 'Ubuntu', sans-serif;
+}

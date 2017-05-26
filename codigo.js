@@ -154,17 +154,17 @@ function calcular() {
     var texto = "";
     
     texto += "<table>";
-    texto += "<tr><td>Impedância Normalizada</td><td>" + ZLNorm.re +" + j * " + ZLNorm.im + "</td></tr>";
-    texto += "<tr><td>Distância do Toco à carga</td><td>" + x1.toExponential(4) +" m ou " + x2.toExponential(4) + " m </td></tr>";
-    texto += "<tr><td>Comprimento do Toco em aberto</td><td>" + comp1aberto.toExponential(4) +" m ou " + comp2aberto.toExponential(4) + "</td></tr>";
-    texto += "<tr><td>Comprimento do Toco em curto</td><td>" + comp1curto.toExponential(4) +" m ou " + comp2curto.toExponential(4) + "</td></tr>";
-    texto +="<tr><td>Vswr em aberto para frequencia maxima</td><td>"+Vswr1abertomax.toExponential(4)+" m ou "+Vswr2abertomax.toExponential(4) + "</td></tr>";
-    texto +="<tr><td>Vswr em aberto para frequencia minima</td><td>"+Vswr1abertomin.toExponential(4)+" m ou "+Vswr2abertomin.toExponential(4) + "</td></tr>";
-    texto +="<tr><td>Vswr em curto para frequencia maxima</td><td>"+Vswr1curtomax.toExponential(4)+" m ou "+Vswr2curtomax.toExponential(4) + "</td></tr>";
-    texto +="<tr><td>Vswr em curto para frequencia minima</td><td>"+Vswr1curtomin.toExponential(4)+" m ou "+Vswr2curtomin.toExponential(4) + "</td></tr>";
+    texto += "<tr><td>$\\text{Impedância Normalizada}$</td><td>$" + ZLNorm.re +" + j\\;" + ZLNorm.im + "$</td></tr>";
+    texto += "<tr><td>$\\text{Distância do Toco à carga}$</td><td>$" + x1.toExponential(4) +"\\;m\\;\\; \\text{ou} \\;\\;" + x2.toExponential(4) + "\\;m $</td></tr>";
+    texto += "<tr><td>$\\text{Comprimento do Toco em aberto}$</td><td>$" + comp1aberto.toExponential(4) +"\\;m\\;\\; \\text{ou}\\;\\; " + comp2aberto.toExponential(4) + "\\;m $</td></tr>";
+    texto += "<tr><td>$\\text{Comprimento do Toco em curto}$</td><td>$" + comp1curto.toExponential(4) +"\\;m\\;\\; \\text{ou} \\;\\;" + comp2curto.toExponential(4) + "\\;m $</td></tr>";
+    texto +="<tr><td>$\\text{Vswr em aberto para frequencia maxima}$</td><td>$"+Vswr1abertomax.toExponential(4)+"\\;m\\;\\; \\text{ou} \\;\\;"+Vswr2abertomax.toExponential(4) + "\\;m $</td></tr>";
+    texto +="<tr><td>$\\text{Vswr em aberto para frequencia minima}$</td><td>$"+Vswr1abertomin.toExponential(4)+"\\;m\\;\\; \\text{ou} \\;\\;"+Vswr2abertomin.toExponential(4) + "\\;m $</td></tr>";
+    texto +="<tr><td>$\\text{Vswr em curto para frequencia maxima}$</td><td>$"+Vswr1curtomax.toExponential(4)+"\\;m\\;\\; \\text{ou} \\;\\;"+Vswr2curtomax.toExponential(4) + "\\;m $</td></tr>";
+    texto +="<tr><td>$\\text{Vswr em curto para frequencia minima}$</td><td>$"+Vswr1curtomin.toExponential(4)+"\\;m\\;\\; \\text{ou} \\;\\;"+Vswr2curtomin.toExponential(4) + "\\;m $</td></tr>";
     texto += "</table>";
     document.getElementById("respostas").innerHTML = texto;
-    
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub,"respostas"]);
     carta.iniciar(648, 649, 1196-648, "desenho", "fundo");
     carta.desenharPontozNorm(ZLNorm, "ZL");
 }
