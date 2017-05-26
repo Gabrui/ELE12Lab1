@@ -17,13 +17,13 @@ function somarSeNegativo(incremento, numero) {
 
 
 /**
- * 
- * @param {Number} aberto
- * @param {Number} l
- * @param {Number} f
- * @param {Number} u
- * @param {Number} e
- * @returns {Number}
+ * @function calcularNovoyToco calcula a admitancia do toco para um valor de frequencia
+ * @param {Number} aberto: variavel boolena que diz se o toco esta em aberto ou nao
+ * @param {Number} l: comprimento do tooc
+ * @param {Number} f: valor de frequencia
+ * @param {Number} u: valor da permeabilidade magnetica
+ * @param {Number} e: valor de permissividade eletrica
+ * @returns {Number} Retorna o valor da admitancia do toco
  */
 function calcularNovoyToco(aberto, l, f, u,e) {
     if (aberto){
@@ -36,14 +36,14 @@ function calcularNovoyToco(aberto, l, f, u,e) {
 
 
 /**
- * 
- * @param {Number} a
- * @param {Number} b
- * @param {Number} NyT
- * @param {Number} x
- * @param {Number} f
- * @param {Number} u
- * @param {Number} e
+ * @function calcularModR Calcula o modulo do coeficiente de reflexao
+ * @param {Number} a: parte real da admitancia de carga
+ * @param {Number} b: parte imaginaria da admitancia de carga
+ * @param {Number} NyT: valor da admitancia do toco
+ * @param {Number} x: posicao do toco
+ * @param {Number} f: frequencia
+ * @param {Number} u: permeabilidade magnetica
+ * @param {Number} e: permissividade eletrica
  * @returns {Number}
  */
 function calcularModR(a,b,NyT,x,f,u,e){
@@ -120,8 +120,8 @@ function calcular() {
     var comp2aberto = somarSeNegativo(lambda/2, math.atan(Imy2)*lambda/(2*math.pi));
     var comp2curto = somarSeNegativo(lambda/2, math.atan(-1/Imy2)*lambda/(2*math.pi));
     
-    var fmax = freq + bw;
-    var fmin = freq - bw;
+    var fmax = freq + bw/2;
+    var fmin = freq - bw/2;
     var NyTaberto1max = calcularNovoyToco(true,comp1aberto,fmax,u0,e0);
     var NyTaberto2max = calcularNovoyToco(true,comp2aberto,fmax,u0,e0);
     var NyTcurto1max = calcularNovoyToco(false,comp1curto,fmax,u0,e0);
