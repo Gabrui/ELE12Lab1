@@ -18,11 +18,11 @@ function somarSeNegativo(incremento, numero) {
 
 /**
  * @function calcularNovoyToco calcula a admitancia do toco para um valor de frequencia
- * @param {Number} aberto: variavel boolena que diz se o toco esta em aberto ou nao
- * @param {Number} l: comprimento do tooc
- * @param {Number} f: valor de frequencia
- * @param {Number} u: valor da permeabilidade magnetica
- * @param {Number} e: valor de permissividade eletrica
+ * @param {Number} aberto variavel boolena que diz se o toco esta em aberto ou nao
+ * @param {Number} l comprimento do tooc
+ * @param {Number} f valor de frequencia
+ * @param {Number} u valor da permeabilidade magnetica
+ * @param {Number} e valor de permissividade eletrica
  * @returns {Number} Retorna o valor da admitancia do toco
  */
 function calcularNovoyToco(aberto, l, f, u,e) {
@@ -37,13 +37,13 @@ function calcularNovoyToco(aberto, l, f, u,e) {
 
 /**
  * @function calcularModR Calcula o modulo do coeficiente de reflexao
- * @param {Number} a: parte real da admitancia de carga
- * @param {Number} b: parte imaginaria da admitancia de carga
- * @param {Number} NyT: valor da admitancia do toco
- * @param {Number} x: posicao do toco
- * @param {Number} f: frequencia
- * @param {Number} u: permeabilidade magnetica
- * @param {Number} e: permissividade eletrica
+ * @param {Number} a parte real da admitancia de carga
+ * @param {Number} b parte imaginaria da admitancia de carga
+ * @param {Number} NyT valor da admitancia do toco
+ * @param {Number} x posicao do toco
+ * @param {Number} f frequencia
+ * @param {Number} u permeabilidade magnetica
+ * @param {Number} e permissividade eletrica
  * @returns {Number}
  */
 function calcularModR(a,b,NyT,x,f,u,e){
