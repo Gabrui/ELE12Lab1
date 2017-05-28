@@ -16,3 +16,8 @@ table {
 h1 {
 font-family: 'Ubuntu', sans-serif;
 }
+
+caption {
+    font-size: 2em;
+    font-family: 'Ubuntu', sans-serif;
+}
