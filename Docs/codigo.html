@@ -1,0 +1,376 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>codigo.js</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+pre {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.ST0 {color: #969696; background-color: #e9eff8}
+.ST2 {color: #969696; font-family: Monospaced; font-weight: bold}
+.ST3 {font-family: Monospaced; font-weight: bold}
+.comment-line {color: #969696}
+.ST4 {color: #009900}
+.keyword {color: #0000e6}
+.ST1 {color: #9f0d79}
+.string {color: #ce7b00}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/home/gabrui/arquivos/ITA/5S/ELE-12/Lab1/codigo.js</td></tr></table>
+<pre>
+  1 <span class="ST0">//UTILIZA A BIBLIOTECA math.js para o cálculo com números complexos</span>
+  2 
+  3 <span class="comment-line">/*</span> <span class="comment-line">global</span> <span class="comment-line">math</span><span class="comment-line">,</span> <span class="comment-line">MathJax</span><span class="comment-line">,</span> <span class="comment-line">Plotly</span> <span class="comment-line">*/</span>
+  4 
+  5 <span class="keyword">var</span> <span class="ST1">epsilon</span> = <span class="ST1">math</span>.pow(10, -8);
+  6 
+  7 <span class="comment-line">/**</span>
+  8  <span class="comment-line">*</span> <span class="ST2">@function</span> <span class="comment-line">somarSeNegativo</span> <span class="comment-line">Soma</span> <span class="comment-line">um</span> <span class="comment-line">incremento</span> <span class="comment-line">a</span> <span class="comment-line">um</span> <span class="comment-line">número</span> <span class="comment-line">se</span> <span class="comment-line">este</span> <span class="comment-line">for</span> <span class="comment-line">negativo</span>
+  9  <span class="comment-line">*</span> <span class="ST2">@param</span> <span class="comment-line">{</span><span class="comment-line">Number</span><span class="comment-line">}</span> <span class="comment-line">incremento</span> <span class="comment-line">Soma</span> <span class="comment-line">esse</span> <span class="comment-line">incremento</span> <span class="comment-line">ao</span> <span class="comment-line">número</span>
+ 10  <span class="comment-line">*</span> <span class="ST2">@param</span> <span class="comment-line">{</span><span class="comment-line">Number</span><span class="comment-line">}</span> <span class="comment-line">numero</span> <span class="comment-line">Número</span> <span class="comment-line">a</span> <span class="comment-line">ser</span> <span class="comment-line">analisado</span> <span class="comment-line">se</span> <span class="comment-line">negativo</span>
+ 11  <span class="comment-line">*</span> <span class="ST2">@returns</span> <span class="comment-line">{</span><span class="comment-line">Number</span><span class="comment-line">}</span> <span class="comment-line">Resultado</span> <span class="comment-line">da</span> <span class="comment-line">operação</span> <span class="comment-line">de</span> <span class="comment-line">soma</span><span class="comment-line">,</span> <span class="comment-line">se</span> <span class="comment-line">numero</span> <span class="comment-line">for</span> <span class="comment-line">negativo</span>
+ 12  <span class="comment-line">*/</span>
+ 13 <span class="keyword">function</span> <span class="ST3">somarSeNegativo</span>(incremento, numero) {
+ 14     <span class="keyword">if</span> (numero &lt; 0) {
+ 15         <span class="keyword">return</span> numero + incremento;
+ 16     }
+ 17     <span class="keyword">return</span> numero;
+ 18 }
+ 19 
+ 20 
+ 21 <span class="comment-line">/**</span>
+ 22  <span class="comment-line">*</span> <span class="ST2">@function</span> <span class="comment-line">calcularNovoyToco</span> <span class="comment-line">calcula</span> <span class="comment-line">a</span> <span class="comment-line">admitancia</span> <span class="comment-line">do</span> <span class="comment-line">toco</span> <span class="comment-line">para</span> <span class="comment-line">um</span> <span class="comment-line">valor</span> <span class="comment-line">de</span> <span class="comment-line">frequencia</span>
+ 23  <span class="comment-line">*</span> <span class="ST2">@param</span> <span class="comment-line">{</span><span class="comment-line">Number</span><span class="comment-line">}</span> <span class="comment-line">aberto</span> <span class="comment-line">variavel</span> <span class="comment-line">boolena</span> <span class="comment-line">que</span> <span class="comment-line">diz</span> <span class="comment-line">se</span> <span class="comment-line">o</span> <span class="comment-line">toco</span> <span class="comment-line">esta</span> <span class="comment-line">em</span> <span class="comment-line">aberto</span> <span class="comment-line">ou</span> <span class="comment-line">nao</span>
+ 24  <span class="comment-line">*</span> <span class="ST2">@param</span> <span class="comment-line">{</span><span class="comment-line">Number</span><span class="comment-line">}</span> <span class="comment-line">l</span> <span class="comment-line">comprimento</span> <span class="comment-line">do</span> <span class="comment-line">tooc</span>
+ 25  <span class="comment-line">*</span> <span class="ST2">@param</span> <span class="comment-line">{</span><span class="comment-line">Number</span><span class="comment-line">}</span> <span class="comment-line">f</span> <span class="comment-line">valor</span> <span class="comment-line">de</span> <span class="comment-line">frequencia</span>
+ 26  <span class="comment-line">*</span> <span class="ST2">@param</span> <span class="comment-line">{</span><span class="comment-line">Number</span><span class="comment-line">}</span> <span class="comment-line">u</span> <span class="comment-line">valor</span> <span class="comment-line">da</span> <span class="comment-line">permeabilidade</span> <span class="comment-line">magnetica</span>
+ 27  <span class="comment-line">*</span> <span class="ST2">@param</span> <span class="comment-line">{</span><span class="comment-line">Number</span><span class="comment-line">}</span> <span class="comment-line">e</span> <span class="comment-line">valor</span> <span class="comment-line">de</span> <span class="comment-line">permissividade</span> <span class="comment-line">eletrica</span>
+ 28  <span class="comment-line">*</span> <span class="ST2">@returns</span> <span class="comment-line">{</span><span class="comment-line">Number</span><span class="comment-line">}</span> <span class="comment-line">Retorna</span> <span class="comment-line">o</span> <span class="comment-line">valor</span> <span class="comment-line">da</span> <span class="comment-line">admitancia</span> <span class="comment-line">do</span> <span class="comment-line">toco</span>
+ 29  <span class="comment-line">*/</span>
+ 30 <span class="keyword">function</span> <span class="ST3">calcularNovoyToco</span>(aberto, l, f, u,e) {
+ 31     <span class="keyword">if</span> (aberto){
+ 32         <span class="keyword">return</span> <span class="ST1">math</span>.tan(2*<span class="ST1">math</span>.pi*l*f*<span class="ST1">math</span>.sqrt(u*e));
+ 33     }
+ 34     <span class="keyword">else</span>{
+ 35         <span class="keyword">return</span> -1*<span class="ST1">math</span>.cot(2*<span class="ST1">math</span>.pi*l*f*<span class="ST1">math</span>.sqrt(u*e));
+ 36     }
+ 37 }
+ 38 
+ 39 
+ 40 <span class="comment-line">/**</span>
+ 41  <span class="comment-line">*</span> <span class="ST2">@function</span> <span class="comment-line">calcularModR</span> <span class="comment-line">Calcula</span> <span class="comment-line">o</span> <span class="comment-line">modulo</span> <span class="comment-line">do</span> <span class="comment-line">coeficiente</span> <span class="comment-line">de</span> <span class="comment-line">reflexao</span>
+ 42  <span class="comment-line">*</span> <span class="ST2">@param</span> <span class="comment-line">{</span><span class="comment-line">Number</span><span class="comment-line">}</span> <span class="comment-line">a</span> <span class="comment-line">parte</span> <span class="comment-line">real</span> <span class="comment-line">da</span> <span class="comment-line">admitancia</span> <span class="comment-line">de</span> <span class="comment-line">carga</span>
+ 43  <span class="comment-line">*</span> <span class="ST2">@param</span> <span class="comment-line">{</span><span class="comment-line">Number</span><span class="comment-line">}</span> <span class="comment-line">b</span> <span class="comment-line">parte</span> <span class="comment-line">imaginaria</span> <span class="comment-line">da</span> <span class="comment-line">admitancia</span> <span class="comment-line">de</span> <span class="comment-line">carga</span>
+ 44  <span class="comment-line">*</span> <span class="ST2">@param</span> <span class="comment-line">{</span><span class="comment-line">Number</span><span class="comment-line">}</span> <span class="comment-line">NyT</span> <span class="comment-line">valor</span> <span class="comment-line">da</span> <span class="comment-line">admitancia</span> <span class="comment-line">do</span> <span class="comment-line">toco</span>
+ 45  <span class="comment-line">*</span> <span class="ST2">@param</span> <span class="comment-line">{</span><span class="comment-line">Number</span><span class="comment-line">}</span> <span class="comment-line">x</span> <span class="comment-line">posicao</span> <span class="comment-line">do</span> <span class="comment-line">toco</span>
+ 46  <span class="comment-line">*</span> <span class="ST2">@param</span> <span class="comment-line">{</span><span class="comment-line">Number</span><span class="comment-line">}</span> <span class="comment-line">f</span> <span class="comment-line">frequencia</span>
+ 47  <span class="comment-line">*</span> <span class="ST2">@param</span> <span class="comment-line">{</span><span class="comment-line">Number</span><span class="comment-line">}</span> <span class="comment-line">u</span> <span class="comment-line">permeabilidade</span> <span class="comment-line">magnetica</span>
+ 48  <span class="comment-line">*</span> <span class="ST2">@param</span> <span class="comment-line">{</span><span class="comment-line">Number</span><span class="comment-line">}</span> <span class="comment-line">e</span> <span class="comment-line">permissividade</span> <span class="comment-line">eletrica</span>
+ 49  <span class="comment-line">*</span> <span class="ST2">@returns</span> <span class="comment-line">{</span><span class="comment-line">Number</span><span class="comment-line">}</span>
+ 50  <span class="comment-line">*/</span>
+ 51 <span class="keyword">function</span> <span class="ST3">calcularModR</span>(a,b,NyT,x,f,u,e){
+ 52     <span class="keyword">var</span> t = <span class="ST1">math</span>.tan(2*<span class="ST1">math</span>.pi*x*f*<span class="ST1">math</span>.sqrt(u*e));
+ 53     <span class="keyword">var</span> t2 = t*t;
+ 54     <span class="keyword">var</span> t3 = t2*t;
+ 55     <span class="keyword">var</span> t4 = t2*t2;
+ 56     <span class="keyword">var</span> Rey = (a - a*b*t + t*a*(b+t))/((1-b*t)*(1-b*t)+(t*a)*(t*a));
+ 57     <span class="keyword">var</span> Imy = (-t*a*a+(b+t)*(1-b*t))/((1-b*t)*(1-b*t)+(t*a)*(t*a));
+ 58     <span class="keyword">var</span> ReyLf = (Rey);
+ 59     <span class="keyword">var</span> ImyLf = (-NyT+Imy);
+ 60     <span class="keyword">var</span> num2 = (1-ReyLf)*(1-ReyLf) + (ImyLf)*(ImyLf);
+ 61     <span class="keyword">var</span> dem2 = (1+ReyLf)*(1+ReyLf) + (ImyLf)*(ImyLf);
+ 62     <span class="keyword">return</span> <span class="ST1">math</span>.sqrt(num2/dem2);
+ 63 }
+ 64 
+ 65 
+ 66 <span class="comment-line">/**</span>
+ 67  <span class="comment-line">*</span> <span class="ST2">@function</span> <span class="comment-line">calcularVswr</span> <span class="comment-line">Retorna</span> <span class="comment-line">o</span> <span class="comment-line">VSWR</span> <span class="comment-line">a</span> <span class="comment-line">partir</span> <span class="comment-line">do</span> <span class="comment-line">coeficiente</span> <span class="comment-line">de</span> <span class="comment-line">reflexão</span>
+ 68  <span class="comment-line">*</span> <span class="ST2">@param</span> <span class="comment-line">{</span><span class="comment-line">Number</span><span class="comment-line">}</span> <span class="comment-line">R</span> <span class="comment-line">Módulo</span> <span class="comment-line">do</span> <span class="comment-line">coeficiente</span> <span class="comment-line">de</span> <span class="comment-line">Reflexão</span>
+ 69  <span class="comment-line">*</span> <span class="ST2">@returns</span> <span class="comment-line">{</span><span class="comment-line">Number</span><span class="comment-line">}</span> <span class="comment-line">VSWR</span> <span class="comment-line">calculado</span>
+ 70  <span class="comment-line">*/</span>
+ 71 <span class="keyword">function</span> <span class="ST3">calcularVswr</span>(R) {
+ 72     <span class="keyword">return</span> (1+R)/(1-R); 
+ 73 }
+ 74 
+ 75 
+ 76 <span class="comment-line">/**</span>
+ 77  <span class="comment-line">*</span> 
+ 78  <span class="comment-line">*</span> <span class="ST2">@param</span> <span class="comment-line">{</span><span class="comment-line">math.complex</span><span class="comment-line">}</span> <span class="comment-line">zlComplexo</span> <span class="comment-line">A</span> <span class="comment-line">impedância</span> <span class="comment-line">da</span> <span class="comment-line">carga</span> <span class="comment-line">normalizada.</span>
+ 79  <span class="comment-line">*</span> <span class="ST2">@returns</span> <span class="comment-line">{</span><span class="comment-line">math.complex</span><span class="comment-line">}</span> <span class="comment-line">O</span> <span class="comment-line">coeficiente</span> <span class="comment-line">de</span> <span class="comment-line">reflexão</span> <span class="comment-line">complexo</span>
+ 80  <span class="comment-line">*/</span>
+ 81 <span class="keyword">function</span> <span class="ST3">calcularReflexao</span>(zlComplexo) {
+ 82     <span class="keyword">return</span> <span class="ST1">math</span>.divide(<span class="ST1">math</span>.subtract(zlComplexo, 1), <span class="ST1">math</span>.add(1, zlComplexo));
+ 83 }
+ 84 
+ 85 
+ 86 
+ 87 <span class="comment-line">/**</span>
+ 88  <span class="comment-line">*</span> <span class="comment-line">Gira</span> <span class="comment-line">no</span> <span class="comment-line">sentido</span> <span class="comment-line">horário</span> <span class="comment-line">para</span> <span class="comment-line">o</span> <span class="comment-line">cáculo</span> <span class="comment-line">da</span> <span class="comment-line">diferença</span> <span class="comment-line">de</span> <span class="comment-line">ângulo</span>
+ 89  <span class="comment-line">*</span> <span class="ST2">@param</span> <span class="comment-line">{</span><span class="comment-line">number</span><span class="comment-line">}</span> <span class="comment-line">inicio</span> <span class="comment-line">Ângulo</span> <span class="comment-line">inicial</span> <span class="comment-line">entre</span> <span class="comment-line">-pi</span> <span class="comment-line">e</span> <span class="comment-line">pi</span>
+ 90  <span class="comment-line">*</span> <span class="ST2">@param</span> <span class="comment-line">{</span><span class="comment-line">number</span><span class="comment-line">}</span> <span class="comment-line">fim</span> <span class="comment-line">Ângulo</span> <span class="comment-line">final</span> <span class="comment-line">entre</span> <span class="comment-line">-pi</span> <span class="comment-line">e</span> <span class="comment-line">pi</span>
+ 91  <span class="comment-line">*</span> <span class="ST2">@returns</span> <span class="comment-line">{</span><span class="comment-line">number</span><span class="comment-line">}</span> <span class="comment-line">Distância</span> <span class="comment-line">angular</span> <span class="comment-line">a</span> <span class="comment-line">ser</span> <span class="comment-line">percorrida</span> <span class="comment-line">no</span> <span class="comment-line">sentido</span> <span class="comment-line">horário</span>
+ 92  <span class="comment-line">*/</span>
+ 93 <span class="keyword">function</span> <span class="ST3">calcDifAngRad</span>(inicio, fim) {
+ 94     <span class="comment-line">// Tem que passar pela descontinuidade</span>
+ 95     <span class="keyword">if</span> (inicio &lt; fim) {
+ 96         <span class="keyword">return</span> 2*<span class="ST1">math</span>.pi - (fim - inicio);
+ 97     } <span class="keyword">else</span> {
+ 98         <span class="keyword">return</span> inicio - fim;
+ 99     }
+100 }
+101 
+102 
+103 
+104 <span class="keyword">function</span> <span class="ST3">calcular</span>() {
+105 
+106     <span class="keyword">var</span> ReZ0 = <span class="ST1">document</span>.getElementsByName(<span class="string">&quot;</span><span class="string">ReZ0</span><span class="string">&quot;</span>)[0].value;
+107     <span class="keyword">var</span> ImZ0 = 0;<span class="comment-line">//document.getElementsByName(&quot;ImZ0&quot;)[0].value;</span>
+108     <span class="keyword">var</span> Z0 = <span class="ST1">math</span>.complex(ReZ0, ImZ0);
+109     <span class="keyword">var</span> ReZL = <span class="ST1">document</span>.getElementsByName(<span class="string">&quot;</span><span class="string">ReZL</span><span class="string">&quot;</span>)[0].value;
+110     <span class="keyword">var</span> ImZL = <span class="ST1">document</span>.getElementsByName(<span class="string">&quot;</span><span class="string">ImZL</span><span class="string">&quot;</span>)[0].value;
+111     <span class="keyword">var</span> ZL = <span class="ST1">math</span>.complex(ReZL, ImZL);
+112     <span class="keyword">var</span> freq = <span class="ST1">document</span>.getElementsByName(<span class="string">&quot;</span><span class="string">freq</span><span class="string">&quot;</span>)[0].value * <span class="ST1">math</span>.pow(10, 6);
+113     <span class="keyword">var</span> urel = <span class="ST1">document</span>.getElementsByName(<span class="string">&quot;</span><span class="string">urel</span><span class="string">&quot;</span>)[0].value;
+114     <span class="keyword">var</span> erel = <span class="ST1">document</span>.getElementsByName(<span class="string">&quot;</span><span class="string">erel</span><span class="string">&quot;</span>)[0].value;
+115     <span class="keyword">var</span> bw   = <span class="ST1">document</span>.getElementsByName(<span class="string">&quot;</span><span class="string">bw</span><span class="string">&quot;</span>)  [0].value * <span class="ST1">math</span>.pow(10,6);
+116     
+117     <span class="keyword">var</span> u = urel * 4 * <span class="ST1">math</span>.pi * <span class="ST1">math</span>.pow(10, -7);
+118     <span class="keyword">var</span> e = erel * 8.8541878176 * <span class="ST1">math</span>.pow(10, -12);
+119     <span class="comment-line">// Impedância Normalizada da carga</span>
+120     <span class="keyword">var</span> ZLNorm = <span class="ST1">math</span>.divide(ZL, Z0);
+121     <span class="comment-line">// Admitância Normalizada da carga</span>
+122     <span class="keyword">var</span> YLNorm = <span class="ST1">math</span>.divide(1, ZLNorm);
+123     <span class="comment-line">// Comprimento de onda</span>
+124     <span class="keyword">var</span> lambda = 1/(<span class="ST1">math</span>.sqrt(u*e)*freq);
+125     <span class="comment-line">// Coeficiente de reflexão do toco em curto normalizada</span>
+126     <span class="keyword">var</span> rTocoCurto = <span class="ST1">math</span>.complex(-1, 0);
+127     <span class="comment-line">// Admitância do toco em aberto normalizada</span>
+128     <span class="keyword">var</span> rTocoAberto = <span class="ST1">math</span>.complex(1, 0);
+129     <span class="comment-line">// Frequência máxima da banda de operação</span>
+130     <span class="keyword">var</span> fmax = freq + bw/2;
+131     <span class="comment-line">// Frequência mínima da banda de operação</span>
+132     <span class="keyword">var</span> fmin = freq - bw/2;
+133     <span class="keyword">var</span> freqs = [fmin, fmax];
+134 
+135     
+136     <span class="comment-line">/*</span> <span class="comment-line">CÓDIGO</span> <span class="comment-line">PARA</span> <span class="comment-line">CALCULAR</span> <span class="comment-line">PELA</span> <span class="comment-line">CARTA</span> <span class="comment-line">DE</span> <span class="comment-line">SMITH</span>
+137     <span class="comment-line">for</span> <span class="comment-line">(var</span> <span class="comment-line">numSol</span> <span class="comment-line">=</span> <span class="comment-line">1;</span> <span class="comment-line">numSol</span> <span class="comment-line">&lt;</span><span class="comment-line">=2;</span> <span class="comment-line">numSol++)</span> <span class="comment-line">{</span>
+138         <span class="comment-line">//</span> <span class="comment-line">Coeficiente</span> <span class="comment-line">de</span> <span class="comment-line">Reflexão</span> <span class="comment-line">da</span> <span class="comment-line">carga</span><span class="comment-line">,</span> <span class="comment-line">complexo</span>
+139         <span class="comment-line">var</span> <span class="comment-line">reflexaoCarga</span> <span class="comment-line">=</span> <span class="comment-line">calcularReflexao(ZLNorm);</span>
+140         <span class="comment-line">//</span> <span class="comment-line">O</span> <span class="comment-line">seu</span> <span class="comment-line">módulo</span>
+141         <span class="comment-line">var</span> <span class="comment-line">reflexaoCargaModulo</span> <span class="comment-line">=</span> <span class="comment-line">reflexaoCarga.toPolar().r;</span>
+142         <span class="comment-line">//</span> <span class="comment-line">O</span> <span class="comment-line">coeficiente</span> <span class="comment-line">de</span> <span class="comment-line">reflexão</span> <span class="comment-line">no</span> <span class="comment-line">ponto</span> <span class="comment-line">de</span> <span class="comment-line">parte</span> <span class="comment-line">real</span> <span class="comment-line">da</span> <span class="comment-line">admitância</span> <span class="comment-line">igual</span>
+143         <span class="comment-line">//</span> <span class="comment-line">a</span> <span class="comment-line">1.</span> <span class="comment-line">Ele</span> <span class="comment-line">é</span> <span class="comment-line">simétrico</span> <span class="comment-line">com</span> <span class="comment-line">relação</span> <span class="comment-line">a</span> <span class="comment-line">outra</span> <span class="comment-line">solução</span>
+144         <span class="comment-line">var</span> <span class="comment-line">reflexaoParteReal1</span> <span class="comment-line">=</span> <span class="comment-line">math.complex.fromPolar(reflexaoCargaModulo</span><span class="comment-line">,</span>
+145             <span class="comment-line">math.acos(reflexaoCargaModulo)</span> <span class="comment-line">*</span> <span class="comment-line">((numSol===1)?1:-1));</span>
+146         <span class="comment-line">//</span> <span class="comment-line">A</span> <span class="comment-line">admitância</span> <span class="comment-line">desse</span> <span class="comment-line">ponto</span> <span class="comment-line">de</span> <span class="comment-line">reflexão</span>
+147         <span class="comment-line">var</span> <span class="comment-line">admitanciaParteReal1</span> <span class="comment-line">=</span> <span class="comment-line">math.divide(math.add(1</span><span class="comment-line">,</span> <span class="comment-line">reflexaoParteReal1)</span><span class="comment-line">,</span> 
+148             <span class="comment-line">math.subtract(1</span><span class="comment-line">,</span> <span class="comment-line">reflexaoParteReal1));</span>
+149         <span class="comment-line">//</span> <span class="comment-line">Um</span> <span class="comment-line">coeficiente</span> <span class="comment-line">de</span> <span class="comment-line">reflexão</span> <span class="comment-line">associada</span> <span class="comment-line">à</span> <span class="comment-line">admitância</span> <span class="comment-line">da</span> <span class="comment-line">carta</span> <span class="comment-line">de</span> <span class="comment-line">smith</span>
+150         <span class="comment-line">var</span> <span class="comment-line">reflexaoAdmitancia</span> <span class="comment-line">=</span> <span class="comment-line">calcularReflexao(YLNorm);</span>
+151         <span class="comment-line">//</span> <span class="comment-line">A</span> <span class="comment-line">distância</span> <span class="comment-line">elétrica</span>
+152         <span class="comment-line">var</span> <span class="comment-line">xEletrico</span> <span class="comment-line">=</span> <span class="comment-line">calcDifAngRad(reflexaoAdmitancia.toPolar().phi</span><span class="comment-line">,</span>
+153                        <span class="comment-line">reflexaoParteReal1.toPolar().phi)</span><span class="comment-line">*</span><span class="comment-line">0.5/(2</span><span class="comment-line">*</span><span class="comment-line">math.pi);</span>
+154         <span class="comment-line">//</span> <span class="comment-line">A</span> <span class="comment-line">distância</span> <span class="comment-line">real</span>
+155         <span class="comment-line">var</span> <span class="comment-line">x</span> <span class="comment-line">=</span> <span class="comment-line">xEletrico</span> <span class="comment-line">*</span> <span class="comment-line">lambda;</span>
+156         <span class="comment-line">//</span> <span class="comment-line">Comprimento</span> <span class="comment-line">do</span> <span class="comment-line">Toco</span> <span class="comment-line">em</span> <span class="comment-line">curto</span>
+157         <span class="comment-line">var</span> <span class="comment-line">compTocoCurto</span> <span class="comment-line">=</span> <span class="comment-line">calcDifAngRad(rTocoCurto.toPolar().phi</span><span class="comment-line">,</span>
+158             <span class="comment-line">-reflexaoParteReal1.toPolar().phi)</span><span class="comment-line">*</span><span class="comment-line">lambda</span><span class="comment-line">*</span><span class="comment-line">0.5/(2</span><span class="comment-line">*</span><span class="comment-line">math.pi);</span>
+159         <span class="comment-line">//</span> <span class="comment-line">Comprimento</span> <span class="comment-line">do</span> <span class="comment-line">Toco</span> <span class="comment-line">em</span> <span class="comment-line">aberto</span>
+160         <span class="comment-line">var</span> <span class="comment-line">compTocoAberto</span> <span class="comment-line">=</span> <span class="comment-line">calcDifAngRad(rTocoAberto.toPolar().phi</span><span class="comment-line">,</span>
+161             <span class="comment-line">-reflexaoParteReal1.toPolar().phi)</span><span class="comment-line">*</span><span class="comment-line">lambda</span><span class="comment-line">*</span><span class="comment-line">0.5/(2</span><span class="comment-line">*</span><span class="comment-line">math.pi);</span>
+162         
+163         <span class="comment-line">//</span> <span class="comment-line">Descasamento</span> <span class="comment-line">de</span> 
+164         <span class="comment-line">for</span> <span class="comment-line">(var</span> <span class="comment-line">tam</span> <span class="comment-line">=</span> <span class="comment-line">freqs.length</span> <span class="comment-line">-</span> <span class="comment-line">1;</span> <span class="comment-line">tam</span> <span class="comment-line">&gt;=</span> <span class="comment-line">0;</span> <span class="comment-line">tam--)</span> <span class="comment-line">{</span>
+165             
+166         <span class="comment-line">}</span>
+167     <span class="comment-line">}</span><span class="comment-line">*/</span>
+168     
+169     <span class="keyword">var</span> a = YLNorm.re;
+170     <span class="keyword">var</span> b = YLNorm.im;
+171     
+172 
+173     <span class="keyword">var</span> A = a*a + b*b - a;
+174     <span class="keyword">var</span> B = -2*b;
+175     <span class="keyword">var</span> C = 1 - a;
+176     <span class="keyword">var</span> delta = B*B - 4*A*C;
+177     <span class="keyword">if</span> (<span class="ST1">math</span>.abs(A) &lt; <span class="ST1">epsilon</span>) {
+178         <span class="keyword">var</span> t2 = -C/B;
+179 
+180         <span class="keyword">var</span> x1 = lambda/4;
+181         <span class="keyword">var</span> x2 = somarSeNegativo(lambda/2, lambda * <span class="ST1">math</span>.atan(t2)/(2*<span class="ST1">math</span>.pi));
+182 
+183         <span class="keyword">var</span> Imy1 =  ZLNorm.im;
+184         <span class="keyword">var</span> Imy2 = -ZLNorm.im;
+185     } <span class="keyword">else</span> {
+186         <span class="keyword">var</span> t1 = (-B + <span class="ST1">math</span>.sqrt(delta))/(2*A);
+187         <span class="keyword">var</span> t2 = (-B - <span class="ST1">math</span>.sqrt(delta))/(2*A);
+188         
+189         <span class="keyword">var</span> x1 = somarSeNegativo(lambda/2, lambda * <span class="ST1">math</span>.atan(t1)/(2*<span class="ST1">math</span>.pi));
+190         <span class="keyword">var</span> x2 = somarSeNegativo(lambda/2, lambda * <span class="ST1">math</span>.atan(t2)/(2*<span class="ST1">math</span>.pi));
+191 
+192         <span class="keyword">var</span> Imy1 = ((b+t1)*(1-b*t1)-t1*a*a)/((1-b*t1)*(1-b*t1)+(t1*a)*(t1*a));
+193         <span class="keyword">var</span> Imy2 = ((b+t2)*(1-b*t2)-t2*a*a)/((1-b*t2)*(1-b*t2)+(t2*a)*(t2*a));
+194     }
+195 
+196 
+197     <span class="keyword">var</span> comp1aberto = somarSeNegativo(lambda/2, <span class="ST1">math</span>.atan(Imy1)*lambda/(2*<span class="ST1">math</span>.pi));
+198     <span class="keyword">var</span> comp1curto = somarSeNegativo(lambda/2, <span class="ST1">math</span>.atan(-1/Imy1)*lambda/(2*<span class="ST1">math</span>.pi));
+199     <span class="keyword">var</span> comp2aberto = somarSeNegativo(lambda/2, <span class="ST1">math</span>.atan(Imy2)*lambda/(2*<span class="ST1">math</span>.pi));
+200     <span class="keyword">var</span> comp2curto = somarSeNegativo(lambda/2, <span class="ST1">math</span>.atan(-1/Imy2)*lambda/(2*<span class="ST1">math</span>.pi));
+201     
+202     
+203     <span class="keyword">var</span> f = fmin;
+204     <span class="keyword">var</span> quantIter = 50;
+205     <span class="keyword">var</span> df = bw/quantIter;
+206     <span class="keyword">var</span> xGrafico = [];
+207     <span class="keyword">var</span> Vswr1aberto = [];
+208     <span class="keyword">var</span> Vswr2aberto = [];
+209     <span class="keyword">var</span> Vswr1curto = [];
+210     <span class="keyword">var</span> Vswr2curto = [];
+211     <span class="keyword">for</span> (<span class="keyword">var</span> quant = 0; quant &lt;= quantIter; quant++, f+=df) {
+212         <span class="keyword">var</span> NyTaberto1 = calcularNovoyToco(<span class="keyword">true</span>,comp1aberto,f,u,e);
+213         <span class="keyword">var</span> NyTaberto2 = calcularNovoyToco(<span class="keyword">true</span>,comp2aberto,f,u,e);
+214         <span class="keyword">var</span> NyTcurto1 = calcularNovoyToco(<span class="keyword">false</span>,comp1curto,f,u,e);
+215         <span class="keyword">var</span> NyTcurto2 = calcularNovoyToco(<span class="keyword">false</span>,comp2curto,f,u,e);
+216 
+217         <span class="keyword">var</span> R1aberto = calcularModR(a,b,NyTaberto1,x1,f,u,e);
+218         <span class="keyword">var</span> R2aberto = calcularModR(a,b,NyTaberto2,x2,f,u,e);
+219 
+220         <span class="keyword">var</span> R1curto = calcularModR(a,b,NyTcurto1,x1,f,u,e);
+221         <span class="keyword">var</span> R2curto = calcularModR(a,b,NyTcurto2,x2,f,u,e);
+222 
+223         xGrafico[quant] = f;
+224         Vswr1aberto[quant] = calcularVswr(R1aberto);
+225         Vswr2aberto[quant] = calcularVswr(R2aberto);
+226         Vswr1curto[quant] = calcularVswr(R1curto);
+227         Vswr2curto[quant] = calcularVswr(R2curto);
+228     }
+229     
+230     <span class="keyword">var</span> texto = <span class="string">&quot;</span><span class="string">&quot;</span>;
+231     <span class="keyword">var</span> carta1 = <span class="keyword">new</span> CartaSmith(649, 649, 1196-648, <span class="string">&quot;</span><span class="string">desenho</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">fundo</span><span class="string">&quot;</span>);
+232     
+233     texto += <span class="string">&quot;</span><span class="string">&lt;table&gt;</span><span class="string">&quot;</span>;
+234     texto += <span class="string">&quot;</span><span class="string">&lt;caption&gt;Primeira Solução&lt;/caption&gt;</span><span class="string">&quot;</span>;
+235     texto += <span class="string">&quot;</span><span class="string">&lt;tr&gt;&lt;td&gt;$\\text{Comprimento de Onda: }$&lt;/td&gt;&lt;td&gt;$</span><span class="string">&quot;</span> + lambda.toFixed(4) + <span class="string">&quot;</span><span class="string">\\;m $&lt;/td&gt;&lt;/tr&gt;</span><span class="string">&quot;</span>;
+236     texto += <span class="string">&quot;</span><span class="string">&lt;tr&gt;&lt;td&gt;$\\text{Impedância Normalizada: }$&lt;/td&gt;&lt;td&gt;$</span><span class="string">&quot;</span> + ZLNorm.re.toFixed(4) +<span class="string">&quot;</span><span class="string"> + j\\;</span><span class="string">&quot;</span> + ZLNorm.im.toFixed(4) + <span class="string">&quot;</span><span class="string">$&lt;/td&gt;&lt;/tr&gt;</span><span class="string">&quot;</span>;
+237     carta1.desenharRetaZNorm(ZLNorm);
+238     carta1.desenharPontoZNorm(ZLNorm, <span class="string">&quot;</span><span class="string">zL</span><span class="string">&quot;</span>);
+239     texto += <span class="string">&quot;</span><span class="string">&lt;tr&gt;&lt;td&gt;$\\text{Admitância Normalizada: }$&lt;/td&gt;&lt;td&gt;$</span><span class="string">&quot;</span> + YLNorm.re.toFixed(4) +<span class="string">&quot;</span><span class="string"> + j\\;</span><span class="string">&quot;</span> + YLNorm.im.toFixed(4) + <span class="string">&quot;</span><span class="string">$&lt;/td&gt;&lt;/tr&gt;</span><span class="string">&quot;</span>;
+240     carta1.setCor(<span class="string">&quot;</span><span class="string">#008888</span><span class="string">&quot;</span>);
+241     carta1.desenharRetaZNorm(YLNorm);
+242     carta1.desenharPontoZNorm(YLNorm, <span class="string">&quot;</span><span class="string">yL</span><span class="string">&quot;</span>);
+243     carta1.setCor(<span class="string">&quot;</span><span class="string">#FF0000</span><span class="string">&quot;</span>);
+244     carta1.curvaRConst(calcularReflexao(YLNorm), calcularReflexao(<span class="ST1">math</span>.complex(1, Imy1)));
+245     carta1.setFonte(<span class="string">&quot;</span><span class="string">1em</span><span class="string">&quot;</span>);
+246     carta1.desenharPontoZNorm(<span class="ST1">math</span>.complex(1, Imy1), <span class="string">&quot;</span><span class="string">Parte Real 1</span><span class="string">&quot;</span>);
+247     carta1.setCor(<span class="string">&quot;</span><span class="string">#FF33FF</span><span class="string">&quot;</span>);
+248     carta1.interpolarZ(<span class="ST1">math</span>.complex(1, Imy1), <span class="ST1">math</span>.complex(1, 0));
+249     texto += <span class="string">&quot;</span><span class="string">&lt;tr&gt;&lt;td&gt;$\\text{Distância do Toco à carga: }$&lt;/td&gt;&lt;td&gt;$</span><span class="string">&quot;</span> + x1.toFixed(4) +<span class="string">&quot;</span><span class="string">\\;m $&lt;/td&gt;&lt;/tr&gt;</span><span class="string">&quot;</span>;
+250     texto += <span class="string">&quot;</span><span class="string">&lt;tr&gt;&lt;td&gt;$\\text{Comprimento do Toco em aberto: }$&lt;/td&gt;&lt;td&gt;$</span><span class="string">&quot;</span> + comp1aberto.toFixed(4) +<span class="string">&quot;</span><span class="string">\\;m $&lt;/td&gt;&lt;/tr&gt;</span><span class="string">&quot;</span>;
+251     texto += <span class="string">&quot;</span><span class="string">&lt;tr&gt;&lt;td&gt;$\\text{Comprimento do Toco em curto: }$&lt;/td&gt;&lt;td&gt;$</span><span class="string">&quot;</span> + comp1curto.toFixed(4) +<span class="string">&quot;</span><span class="string">\\;m $&lt;/td&gt;&lt;/tr&gt;</span><span class="string">&quot;</span>;
+252     texto +=<span class="string">&quot;</span><span class="string">&lt;tr&gt;&lt;td&gt;$V_{swr} \\text{ em aberto para frequencia máxima: }$&lt;/td&gt;&lt;td&gt;$</span><span class="string">&quot;</span>+Vswr1aberto[quantIter].toFixed(4)+<span class="string">&quot;</span><span class="string">\\;\\; $&lt;/td&gt;&lt;/tr&gt;</span><span class="string">&quot;</span>;
+253     texto +=<span class="string">&quot;</span><span class="string">&lt;tr&gt;&lt;td&gt;$V_{swr} \\text{ em aberto para frequencia mínima: }$&lt;/td&gt;&lt;td&gt;$</span><span class="string">&quot;</span>+Vswr1aberto[0].toFixed(4)+<span class="string">&quot;</span><span class="string">\\;\\; $&lt;/td&gt;&lt;/tr&gt;</span><span class="string">&quot;</span>;
+254     texto +=<span class="string">&quot;</span><span class="string">&lt;tr&gt;&lt;td&gt;$V_{swr} \\text{ em curto para frequencia máxima: }$&lt;/td&gt;&lt;td&gt;$</span><span class="string">&quot;</span>+Vswr1curto[quantIter].toFixed(4)+<span class="string">&quot;</span><span class="string">\\;\\; $&lt;/td&gt;&lt;/tr&gt;</span><span class="string">&quot;</span>;
+255     texto +=<span class="string">&quot;</span><span class="string">&lt;tr&gt;&lt;td&gt;$V_{swr} \\text{ em curto para frequencia mínima: }$&lt;/td&gt;&lt;td&gt;$</span><span class="string">&quot;</span>+Vswr1curto[0].toFixed(4)+<span class="string">&quot;</span><span class="string">\\;\\; $&lt;/td&gt;&lt;/tr&gt;</span><span class="string">&quot;</span>;
+256     texto += <span class="string">&quot;</span><span class="string">&lt;/table&gt;</span><span class="string">&quot;</span>;
+257     
+258     
+259     <span class="ST1">document</span>.getElementById(<span class="string">&quot;</span><span class="string">respostas</span><span class="string">&quot;</span>).<span class="ST4">innerHTML</span> = texto;
+260     <span class="ST1">MathJax</span>.Hub.Queue([<span class="string">&quot;</span><span class="string">Typeset</span><span class="string">&quot;</span>,<span class="ST1">MathJax</span>.Hub,<span class="string">&quot;</span><span class="string">respostas</span><span class="string">&quot;</span>]);
+261     
+262     
+263     <span class="keyword">var</span> texto2 = <span class="string">&quot;</span><span class="string">&quot;</span>;
+264     <span class="keyword">var</span> carta2 = <span class="keyword">new</span> CartaSmith(649, 649, 1196-648, <span class="string">&quot;</span><span class="string">desenho2</span><span class="string">&quot;</span>, <span class="string">&quot;</span><span class="string">fundo</span><span class="string">&quot;</span>);
+265     texto2 += <span class="string">&quot;</span><span class="string">&lt;table&gt;</span><span class="string">&quot;</span>;
+266     texto2 += <span class="string">&quot;</span><span class="string">&lt;caption&gt;Segunda Solução&lt;/caption&gt;</span><span class="string">&quot;</span>;
+267     texto2 += <span class="string">&quot;</span><span class="string">&lt;tr&gt;&lt;td&gt;$\\text{Comprimento de Onda: }$&lt;/td&gt;&lt;td&gt;$</span><span class="string">&quot;</span> + lambda.toFixed(4) + <span class="string">&quot;</span><span class="string">\\;m $&lt;/td&gt;&lt;/tr&gt;</span><span class="string">&quot;</span>;
+268     texto2 += <span class="string">&quot;</span><span class="string">&lt;tr&gt;&lt;td&gt;$\\text{Impedância Normalizada: }$&lt;/td&gt;&lt;td&gt;$</span><span class="string">&quot;</span> + ZLNorm.re.toFixed(4) +<span class="string">&quot;</span><span class="string"> + j\\;</span><span class="string">&quot;</span> + ZLNorm.im.toFixed(4) + <span class="string">&quot;</span><span class="string">$&lt;/td&gt;&lt;/tr&gt;</span><span class="string">&quot;</span>;
+269     carta2.desenharRetaZNorm(ZLNorm);
+270     carta2.desenharPontoZNorm(ZLNorm, <span class="string">&quot;</span><span class="string">zL</span><span class="string">&quot;</span>);
+271     texto2 += <span class="string">&quot;</span><span class="string">&lt;tr&gt;&lt;td&gt;$\\text{Admitância Normalizada: }$&lt;/td&gt;&lt;td&gt;$</span><span class="string">&quot;</span> + YLNorm.re.toFixed(4) +<span class="string">&quot;</span><span class="string"> + j\\;</span><span class="string">&quot;</span> + YLNorm.im.toFixed(4) + <span class="string">&quot;</span><span class="string">$&lt;/td&gt;&lt;/tr&gt;</span><span class="string">&quot;</span>;
+272     carta2.setCor(<span class="string">&quot;</span><span class="string">#008888</span><span class="string">&quot;</span>);
+273     carta2.desenharRetaZNorm(YLNorm);
+274     carta2.desenharPontoZNorm(YLNorm, <span class="string">&quot;</span><span class="string">yL</span><span class="string">&quot;</span>);
+275     carta2.setCor(<span class="string">&quot;</span><span class="string">#FF0000</span><span class="string">&quot;</span>);
+276     carta2.curvaRConst(calcularReflexao(YLNorm), calcularReflexao(<span class="ST1">math</span>.complex(1, Imy2)));
+277     carta2.setFonte(<span class="string">&quot;</span><span class="string">1em</span><span class="string">&quot;</span>);
+278     carta2.desenharPontoZNorm(<span class="ST1">math</span>.complex(1, Imy2), <span class="string">&quot;</span><span class="string">Parte Real 1</span><span class="string">&quot;</span>);
+279     carta2.setCor(<span class="string">&quot;</span><span class="string">#FF33FF</span><span class="string">&quot;</span>);
+280     carta2.interpolarZ(<span class="ST1">math</span>.complex(1, Imy2), <span class="ST1">math</span>.complex(1, 0));
+281     texto2 += <span class="string">&quot;</span><span class="string">&lt;tr&gt;&lt;td&gt;$\\text{Distância do Toco à carga: }$&lt;/td&gt;&lt;td&gt;$</span><span class="string">&quot;</span> + x2.toFixed(4) +<span class="string">&quot;</span><span class="string">\\;m $&lt;/td&gt;&lt;/tr&gt;</span><span class="string">&quot;</span>;
+282     texto2 += <span class="string">&quot;</span><span class="string">&lt;tr&gt;&lt;td&gt;$\\text{Comprimento do Toco em aberto: }$&lt;/td&gt;&lt;td&gt;$</span><span class="string">&quot;</span> + comp2aberto.toFixed(4) +<span class="string">&quot;</span><span class="string">\\;m $&lt;/td&gt;&lt;/tr&gt;</span><span class="string">&quot;</span>;
+283     texto2 += <span class="string">&quot;</span><span class="string">&lt;tr&gt;&lt;td&gt;$\\text{Comprimento do Toco em curto: }$&lt;/td&gt;&lt;td&gt;$</span><span class="string">&quot;</span> + comp2curto.toFixed(4) +<span class="string">&quot;</span><span class="string">\\;m $&lt;/td&gt;&lt;/tr&gt;</span><span class="string">&quot;</span>;
+284     texto2 +=<span class="string">&quot;</span><span class="string">&lt;tr&gt;&lt;td&gt;$V_{swr} \\text{ em aberto para frequencia máxima: }$&lt;/td&gt;&lt;td&gt;$</span><span class="string">&quot;</span>+Vswr2aberto[quantIter].toFixed(4)+<span class="string">&quot;</span><span class="string">\\;\\; $&lt;/td&gt;&lt;/tr&gt;</span><span class="string">&quot;</span>;
+285     texto2 +=<span class="string">&quot;</span><span class="string">&lt;tr&gt;&lt;td&gt;$V_{swr} \\text{ em aberto para frequencia mínima: }$&lt;/td&gt;&lt;td&gt;$</span><span class="string">&quot;</span>+Vswr2aberto[0].toFixed(4)+<span class="string">&quot;</span><span class="string">\\;\\; $&lt;/td&gt;&lt;/tr&gt;</span><span class="string">&quot;</span>;
+286     texto2 +=<span class="string">&quot;</span><span class="string">&lt;tr&gt;&lt;td&gt;$V_{swr} \\text{ em curto para frequencia máxima: }$&lt;/td&gt;&lt;td&gt;$</span><span class="string">&quot;</span>+Vswr2curto[quantIter].toFixed(4)+<span class="string">&quot;</span><span class="string">\\;\\; $&lt;/td&gt;&lt;/tr&gt;</span><span class="string">&quot;</span>;
+287     texto2 +=<span class="string">&quot;</span><span class="string">&lt;tr&gt;&lt;td&gt;$V_{swr} \\text{ em curto para frequencia mínima: }$&lt;/td&gt;&lt;td&gt;$</span><span class="string">&quot;</span>+Vswr2curto[0].toFixed(4)+<span class="string">&quot;</span><span class="string">\\;\\; $&lt;/td&gt;&lt;/tr&gt;</span><span class="string">&quot;</span>;
+288     texto2 += <span class="string">&quot;</span><span class="string">&lt;/table&gt;</span><span class="string">&quot;</span>;
+289     
+290     
+291     <span class="ST1">document</span>.getElementById(<span class="string">&quot;</span><span class="string">respostas2</span><span class="string">&quot;</span>).<span class="ST4">innerHTML</span> = texto2;
+292     <span class="ST1">MathJax</span>.Hub.Queue([<span class="string">&quot;</span><span class="string">Typeset</span><span class="string">&quot;</span>,<span class="ST1">MathJax</span>.Hub,<span class="string">&quot;</span><span class="string">respostas2</span><span class="string">&quot;</span>]);
+293 
+294     
+295     <span class="keyword">var</span> <span class="ST3">dadosVswr1a</span> = {
+296         <span class="ST4">x</span>: xGrafico,
+297         <span class="ST4">y</span>: Vswr1aberto,
+298         <span class="ST4">mode</span>: <span class="string">&#39;</span><span class="string">lines</span><span class="string">&#39;</span>,
+299         <span class="ST4">name</span>: <span class="string">&#39;</span><span class="string">Solução 1 Toco Aberto</span><span class="string">&#39;</span>,
+300         <span class="ST3">line</span>: {<span class="ST4">shape</span>: <span class="string">&#39;</span><span class="string">spline</span><span class="string">&#39;</span>},
+301         <span class="ST4">type</span>: <span class="string">&#39;</span><span class="string">scatter</span><span class="string">&#39;</span>
+302     };
+303     <span class="keyword">var</span> <span class="ST3">dadosVswr2a</span> = {
+304         <span class="ST4">x</span>: xGrafico,
+305         <span class="ST4">y</span>: Vswr2aberto,
+306         <span class="ST4">mode</span>: <span class="string">&#39;</span><span class="string">lines</span><span class="string">&#39;</span>,
+307         <span class="ST4">name</span>: <span class="string">&#39;</span><span class="string">Solução 2 Toco Aberto</span><span class="string">&#39;</span>,
+308         <span class="ST3">line</span>: {<span class="ST4">shape</span>: <span class="string">&#39;</span><span class="string">spline</span><span class="string">&#39;</span>},
+309         <span class="ST4">type</span>: <span class="string">&#39;</span><span class="string">scatter</span><span class="string">&#39;</span>
+310     };
+311     <span class="keyword">var</span> <span class="ST3">dadosVswr1c</span> = {
+312         <span class="ST4">x</span>: xGrafico,
+313         <span class="ST4">y</span>: Vswr1curto,
+314         <span class="ST4">mode</span>: <span class="string">&#39;</span><span class="string">lines</span><span class="string">&#39;</span>,
+315         <span class="ST4">name</span>: <span class="string">&#39;</span><span class="string">Solução 1 Toco em Curto</span><span class="string">&#39;</span>,
+316         <span class="ST3">line</span>: {<span class="ST4">shape</span>: <span class="string">&#39;</span><span class="string">spline</span><span class="string">&#39;</span>},
+317         <span class="ST4">type</span>: <span class="string">&#39;</span><span class="string">scatter</span><span class="string">&#39;</span>
+318     };
+319     <span class="keyword">var</span> <span class="ST3">dadosVswr2c</span> = {
+320         <span class="ST4">x</span>: xGrafico,
+321         <span class="ST4">y</span>: Vswr2curto,
+322         <span class="ST4">mode</span>: <span class="string">&#39;</span><span class="string">lines</span><span class="string">&#39;</span>,
+323         <span class="ST4">name</span>: <span class="string">&#39;</span><span class="string">Solução 2 Toco em Curto</span><span class="string">&#39;</span>,
+324         <span class="ST3">line</span>: {<span class="ST4">shape</span>: <span class="string">&#39;</span><span class="string">spline</span><span class="string">&#39;</span>},
+325         <span class="ST4">type</span>: <span class="string">&#39;</span><span class="string">scatter</span><span class="string">&#39;</span>
+326     };
+327 
+328     <span class="keyword">var</span> dados = [dadosVswr1a, dadosVswr1c, dadosVswr2a, dadosVswr2c];
+329 
+330     <span class="keyword">var</span> <span class="ST3">estilo</span> = {
+331         <span class="ST3">legend</span>: {
+332             <span class="ST4">y</span>: 0.5,
+333             <span class="ST3">font</span>: {<span class="ST4">size</span>: 16},
+334             <span class="ST4">yref</span>: <span class="string">&#39;</span><span class="string">paper</span><span class="string">&#39;</span>
+335         },
+336         <span class="ST4">title</span>: <span class="string">&#39;</span><span class="string">Análise de Largura de faixa</span><span class="string">&#39;</span>,
+337         <span class="ST3">xaxis</span>: {
+338             <span class="ST4">title</span>: <span class="string">&#39;</span><span class="string">Frequência (Hz)</span><span class="string">&#39;</span>
+339         },
+340         <span class="ST3">yaxis</span>: {
+341             <span class="ST4">title</span>: <span class="string">&#39;</span><span class="string">SWR</span><span class="string">&#39;</span>
+342         }
+343     };
+344 
+345     <span class="ST1">Plotly</span>.newPlot(<span class="string">&#39;</span><span class="string">swr</span><span class="string">&#39;</span>, dados, estilo);
+346 
+347     
+348 }
+349 
+350 
+</pre></body>
+</html>

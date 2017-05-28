@@ -11,11 +11,11 @@
     <script src="codigo.js" type="text/javascript"></script>
     <script src="cartaSmith.js" type="text/javascript"></script>
     <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-});
-</script>
-<script type="text/javascript" async src="path-to-mathjax/MathJax.js?config=TeX-AMS_CHTML"></script>
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+        });
+    </script>
+    <script type="text/javascript" async src="path-to-mathjax/MathJax.js?config=TeX-AMS_CHTML"></script>
     <script type="text/javascript" async
     src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
     </script>
@@ -26,6 +26,7 @@ MathJax.Hub.Config({
 
 <body>
 <h1> Lab 1 - ELE-12 - Casamento de impedância com toco simples em paralelo</h1>        
+<p> Especifique as entradas para o cálculo do casamento com toco simples em paralelo:</p>
 <form id="entradas" action="">
   <table>
       <tr>
@@ -38,7 +39,7 @@ MathJax.Hub.Config({
       </tr>
       <tr>
         <td>$\text{Frequência de Casamento}\;\; (MHz)$</td> 
-        <td><input type="number" name="freq" step="any" value="800"></td>
+        <td><input type="number" name="freq" step="any" value="2000"></td>
       </tr>
       <tr>
         <td>$U_{rel}$</td> 
@@ -50,7 +51,7 @@ MathJax.Hub.Config({
       </tr>
       <tr>
         <td>$\text{BW de operação}\;\; (MHz)$</td> 
-        <td><input type="number" name="bw" step="any" value="50"></td>
+        <td><input type="number" name="bw" step="any" value="300"></td>
       </tr>
     </table>
 </form>

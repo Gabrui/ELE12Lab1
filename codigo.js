@@ -292,21 +292,6 @@ function calcular() {
     MathJax.Hub.Queue(["Typeset",MathJax.Hub,"respostas2"]);
 
     
-    /*
-     *     texto += "<table>";
-    texto += "<caption>Primeira Solução</caption>";
-    texto += "<tr><td>$\\text{Impedância Normalizada: }$</td><td>$" + ZLNorm.re +" + j\\;" + ZLNorm.im + "$</td></tr>";
-    texto += "<tr><td>$\\text{Distância do Toco à carga: }$</td><td>$" + x1.toFixed(4) +"\\;m\\;\\; \\text{ou} \\;\\;" + x2.toFixed(4) + "\\;m $</td></tr>";
-    texto += "<tr><td>$\\text{Comprimento do Toco em aberto: }$</td><td>$" + comp1aberto.toFixed(4) +"\\;m\\;\\; \\text{ou}\\;\\; " + comp2aberto.toFixed(4) + "\\;m $</td></tr>";
-    texto += "<tr><td>$\\text{Comprimento do Toco em curto: }$</td><td>$" + comp1curto.toFixed(4) +"\\;m\\;\\; \\text{ou} \\;\\;" + comp2curto.toFixed(4) + "\\;m $</td></tr>";
-    texto +="<tr><td>$V_{swr} \\text{ em aberto para frequencia máxima: }$</td><td>$"+Vswr1abertomax.toFixed(4)+"\\;\\;\\; \\text{ou} \\;\\;"+Vswr2abertomax.toFixed(4) + "\\; $</td></tr>";
-    texto +="<tr><td>$V_{swr} \\text{ em aberto para frequencia mínima: }$</td><td>$"+Vswr1abertomin.toFixed(4)+"\\;\\;\\; \\text{ou} \\;\\;"+Vswr2abertomin.toFixed(4) + "\\; $</td></tr>";
-    texto +="<tr><td>$V_{swr} \\text{ em curto para frequencia máxima: }$</td><td>$"+Vswr1curtomax.toFixed(4)+"\\;\\;\\; \\text{ou} \\;\\;"+Vswr2curtomax.toFixed(4) + "\\; $</td></tr>";
-    texto +="<tr><td>$V_{swr} \\text{ em curto para frequencia mínima: }$</td><td>$"+Vswr1curtomin.toFixed(4)+"\\;\\;\\; \\text{ou} \\;\\;"+Vswr2curtomin.toFixed(4) + "\\; $</td></tr>";
-    texto += "</table>";
-    
-     */
-    
     var dadosVswr1a = {
         x: xGrafico,
         y: Vswr1aberto,
