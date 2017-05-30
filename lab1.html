@@ -6,6 +6,7 @@
     <title>Lab1</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="math.js" type="text/javascript"></script>
     <script src="src/plotly-latest.min.js"></script>
     <script src="codigo.js" type="text/javascript"></script>
@@ -28,7 +29,7 @@
 <h1> Lab 1 - ELE-12 - Casamento de impedância com toco simples em paralelo</h1>        
 <p> Especifique as entradas para o cálculo do casamento com toco simples em paralelo:</p>
 <form id="entradas" action="">
-  <table>
+  <table class ="entrada">
       <tr>
         <td>$Z_0$</td> 
         <td><input type="number" name="ReZ0" step="any" value="50"> <!--+ j <input type="number" name="ImZ0" step="any" value="0">--></td>
@@ -60,20 +61,24 @@
 
 <button onclick="calcular()">Calcular</button>
 <p></p>
-<img src="src/drawing.png" alt="Toco Aberto em Paralelo" width="500"/>
+<!--<img src="src/drawing.png" alt="Toco Aberto em Paralelo" width="500"/> -->
 <p></p><p></p>
-<div id="respostas"></div>
+<div id="respostas">
+  <table class = "saida">
+    
+  </table>
+</div>
 
-<canvas id="desenho" width="1300" height="1300">
+<canvas  hidden id="desenho" width="1300" height="1300">
     <img id="fundo" src="src/fundo.svg" alt="Carta de Smith"/>
 </canvas>
 
 <div id="respostas2"></div>
 
-<canvas id="desenho2" width="1300" height="1300">
+<canvas  hidden id="desenho2" width="1300" height="1300">
 </canvas>
 
-<div id="swr" style="width: 1300px; height: 700px; margin: auto"></div>
+<div  id="swr" style="width: 1300px; height: 700px; margin: auto"></div>
 
 </body>
 </html>
