@@ -202,10 +202,10 @@ function calcular() {
     }
 
 
-    var comp1aberto = somarSeNegativo(lambda/2, math.atan(Imy1)*lambda/(2*math.pi));
-    var comp1curto = somarSeNegativo(lambda/2, math.atan(-1/Imy1)*lambda/(2*math.pi));
-    var comp2aberto = somarSeNegativo(lambda/2, math.atan(Imy2)*lambda/(2*math.pi));
-    var comp2curto = somarSeNegativo(lambda/2, math.atan(-1/Imy2)*lambda/(2*math.pi));
+    var comp1aberto = somarSeNegativo(lambda/2, math.atan(-Imy1)*lambda/(2*math.pi));
+    var comp1curto = somarSeNegativo(lambda/2, math.atan(1/Imy1)*lambda/(2*math.pi));
+    var comp2aberto = somarSeNegativo(lambda/2, math.atan(-Imy2)*lambda/(2*math.pi));
+    var comp2curto = somarSeNegativo(lambda/2, math.atan(1/Imy2)*lambda/(2*math.pi));
     
     
     var f = fmin;
@@ -241,23 +241,19 @@ function calcular() {
     //texto += "<table>";
     //texto += "<caption>Primeira Solução</caption>";
     var jtextz = "+j\\;";
-    if(ZLNorm.im < 0)
-    {
+    if(ZLNorm.im < 0) {
         jtextz = "-j\\;";
-        ZLNorm.im = ZLNorm.im * (-1)
     }
-    var jtexty = "+j\\;"
-    if(YLNorm.im < 0)
-    {
-        jtexty = "-j\\;"
-        YLNorm.im = YLNorm.im * (-1)
+    var jtexty = "+j\\;";
+    if(YLNorm.im < 0) {
+        jtexty = "-j\\;";
     }/**/
-    texto += "<tr><td> </td><th > Primeira Solução</th><th width = '300'> Segunda Solução</th></tr>"
+    texto += "<tr><td> </td><th > Primeira Solução</th><th width = '300'> Segunda Solução</th></tr>";
     texto += "<tr><td>$\\text{Comprimento de Onda(m): }$</td><td>$" + lambda.toFixed(4) + "\\;$</td><td>$" + lambda.toFixed(4) + "$</td></tr>";
-    texto += "<tr><td>$\\text{Impedância Normalizada($\\Omega$): }$</td><td>$" + ZLNorm.re.toFixed(4) +jtextz + ZLNorm.im.toFixed(4) + "$</td><td>$" + ZLNorm.re.toFixed(4) +jtextz + ZLNorm.im.toFixed(4) + "$</td></tr>";
+    texto += "<tr><td>$\\text{Impedância Normalizada($\\Omega$): }$</td><td>$" + ZLNorm.re.toFixed(4) +jtextz + math.abs(ZLNorm.im).toFixed(4) + "$</td><td>$" + ZLNorm.re.toFixed(4) +jtextz + math.abs(ZLNorm.im).toFixed(4) + "$</td></tr>";
     carta1.desenharRetaZNorm(ZLNorm);
     carta1.desenharPontoZNorm(ZLNorm, "zL");
-    texto += "<tr><td>$\\text{Admitância Normalizada($\\Omega$): }$</td><td>$" + YLNorm.re.toFixed(4) +jtexty + YLNorm.im.toFixed(4) + "$</td><td>$" + YLNorm.re.toFixed(4) +jtexty + YLNorm.im.toFixed(4) + "$</td></tr>";
+    texto += "<tr><td>$\\text{Admitância Normalizada($\\Omega$): }$</td><td>$" + YLNorm.re.toFixed(4) +jtexty + math.abs(YLNorm.im).toFixed(4) + "$</td><td>$" + YLNorm.re.toFixed(4) +jtexty + math.abs(YLNorm.im).toFixed(4) + "$</td></tr>";
     carta1.setCor("#008888");
     carta1.desenharRetaZNorm(YLNorm);
     carta1.desenharPontoZNorm(YLNorm, "yL");
