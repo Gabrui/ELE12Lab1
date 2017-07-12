@@ -99,16 +99,7 @@ function calcDifAngRad(inicio, fim) {
     }
 }
 
-function reveal(){
-    $("#desenho").show();
-    $("#desenho2").hide();
-    
-}
 
-function reveal2(){
-    $("#desenho2").show();
-    $("#desenho").hide();
-}
 
 function calcular() {
 
@@ -122,6 +113,7 @@ function calcular() {
     var urel = document.getElementsByName("urel")[0].value;
     var erel = document.getElementsByName("erel")[0].value;
     var bw   = document.getElementsByName("bw")  [0].value * math.pow(10,6);
+    
     var u = urel * 4 * math.pi * math.pow(10, -7);
     var e = erel * 8.8541878176 * math.pow(10, -12);
     // Impedância Normalizada da carga
@@ -202,10 +194,10 @@ function calcular() {
     }
 
 
-    var comp1aberto = somarSeNegativo(lambda/2, math.atan(-Imy1)*lambda/(2*math.pi));
-    var comp1curto = somarSeNegativo(lambda/2, math.atan(1/Imy1)*lambda/(2*math.pi));
-    var comp2aberto = somarSeNegativo(lambda/2, math.atan(-Imy2)*lambda/(2*math.pi));
-    var comp2curto = somarSeNegativo(lambda/2, math.atan(1/Imy2)*lambda/(2*math.pi));
+    var comp1aberto = somarSeNegativo(lambda/2, math.atan(Imy1)*lambda/(2*math.pi));
+    var comp1curto = somarSeNegativo(lambda/2, math.atan(-1/Imy1)*lambda/(2*math.pi));
+    var comp2aberto = somarSeNegativo(lambda/2, math.atan(Imy2)*lambda/(2*math.pi));
+    var comp2curto = somarSeNegativo(lambda/2, math.atan(-1/Imy2)*lambda/(2*math.pi));
     
     
     var f = fmin;
@@ -238,22 +230,13 @@ function calcular() {
     var texto = "";
     var carta1 = new CartaSmith(649, 649, 1196-648, "desenho", "fundo");
     
-    //texto += "<table>";
-    //texto += "<caption>Primeira Solução</caption>";
-    var jtextz = "+j\\;";
-    if(ZLNorm.im < 0) {
-        jtextz = "-j\\;";
-    }
-    var jtexty = "+j\\;";
-    if(YLNorm.im < 0) {
-        jtexty = "-j\\;";
-    }/**/
-    texto += "<tr><td> </td><th > Primeira Solução</th><th width = '300'> Segunda Solução</th></tr>";
-    texto += "<tr><td>$\\text{Comprimento de Onda(m): }$</td><td>$" + lambda.toFixed(4) + "\\;$</td><td>$" + lambda.toFixed(4) + "$</td></tr>";
-    texto += "<tr><td>$\\text{Impedância Normalizada($\\Omega$): }$</td><td>$" + ZLNorm.re.toFixed(4) +jtextz + math.abs(ZLNorm.im).toFixed(4) + "$</td><td>$" + ZLNorm.re.toFixed(4) +jtextz + math.abs(ZLNorm.im).toFixed(4) + "$</td></tr>";
+    texto += "<table>";
+    texto += "<caption>Primeira Solução</caption>";
+    texto += "<tr><td>$\\text{Comprimento de Onda: }$</td><td>$" + lambda.toFixed(4) + "\\;m $</td></tr>";
+    texto += "<tr><td>$\\text{Impedância Normalizada: }$</td><td>$" + ZLNorm.re.toFixed(4) +" + j\\;" + ZLNorm.im.toFixed(4) + "$</td></tr>";
     carta1.desenharRetaZNorm(ZLNorm);
     carta1.desenharPontoZNorm(ZLNorm, "zL");
-    texto += "<tr><td>$\\text{Admitância Normalizada($\\Omega$): }$</td><td>$" + YLNorm.re.toFixed(4) +jtexty + math.abs(YLNorm.im).toFixed(4) + "$</td><td>$" + YLNorm.re.toFixed(4) +jtexty + math.abs(YLNorm.im).toFixed(4) + "$</td></tr>";
+    texto += "<tr><td>$\\text{Admitância Normalizada: }$</td><td>$" + YLNorm.re.toFixed(4) +" + j\\;" + YLNorm.im.toFixed(4) + "$</td></tr>";
     carta1.setCor("#008888");
     carta1.desenharRetaZNorm(YLNorm);
     carta1.desenharPontoZNorm(YLNorm, "yL");
@@ -263,24 +246,26 @@ function calcular() {
     carta1.desenharPontoZNorm(math.complex(1, Imy1), "Parte Real 1");
     carta1.setCor("#FF33FF");
     carta1.interpolarZ(math.complex(1, Imy1), math.complex(1, 0));
-    texto += "<tr><td>$\\text{Distância do Toco à carga(m): }$</td><td>$" + x1.toFixed(4) +" $</td><td>$" + x2.toFixed(4) + "$</td></tr>";
-    texto += "<tr><td>$\\text{Comprimento do Toco em aberto(m): }$</td><td>$" + comp1aberto.toFixed(4) +" $</td><td>$" + comp2aberto.toFixed(4) + "$</td></tr>";
-    texto += "<tr><td>$\\text{Comprimento do Toco em curto(m): }$</td><td>$" + comp1curto.toFixed(4) +" $</td><td>$" + comp2curto.toFixed(4) + "$</td></tr>";
-    texto +="<tr><td>$V_{swr} \\text{ em aberto para frequencia máxima: }$</td><td>$"+Vswr1aberto[quantIter].toFixed(4)+"\\;\\; $</td><td>$" + Vswr2aberto[quantIter].toFixed(4) + "$</td></tr>";
-    texto +="<tr><td>$V_{swr} \\text{ em aberto para frequencia mínima: }$</td><td>$"+Vswr1aberto[0].toFixed(4)+"\\;\\; $</td><td>$" + Vswr2aberto[0].toFixed(4) + "$</td></tr>";
-    texto +="<tr><td>$V_{swr} \\text{ em curto para frequencia máxima: }$</td><td>$"+Vswr1curto[quantIter].toFixed(4)+"\\;\\; $</td><td>$" + Vswr2curto[quantIter].toFixed(4) + "$</td></tr>";
-    texto +="<tr><td>$V_{swr} \\text{ em curto para frequencia mínima: }$</td><td>$"+Vswr1curto[0].toFixed(4)+"\\;\\; $</td><td>$" + Vswr2curto[0].toFixed(4) + "$</td></tr>";
-    texto +="<tr><td>Carta de Smith</td><td><button onclick='reveal()'>Mostrar</button></td><td><button onclick='reveal2()'>Mostrar</button></td></tr>";
+    texto += "<tr><td>$\\text{Distância do Toco à carga: }$</td><td>$" + x1.toFixed(4) +"\\;m $</td></tr>";
+    texto += "<tr><td>$\\text{Comprimento do Toco em aberto: }$</td><td>$" + comp2aberto.toFixed(4) +"\\;m $</td></tr>";
+    texto += "<tr><td>$\\text{Comprimento do Toco em curto: }$</td><td>$" + comp2curto.toFixed(4) +"\\;m $</td></tr>";
+    texto +="<tr><td>$V_{swr} \\text{ em aberto para frequencia máxima: }$</td><td>$"+Vswr1aberto[quantIter].toFixed(4)+"\\;\\; $</td></tr>";
+    texto +="<tr><td>$V_{swr} \\text{ em aberto para frequencia mínima: }$</td><td>$"+Vswr1aberto[0].toFixed(4)+"\\;\\; $</td></tr>";
+    texto +="<tr><td>$V_{swr} \\text{ em curto para frequencia máxima: }$</td><td>$"+Vswr1curto[quantIter].toFixed(4)+"\\;\\; $</td></tr>";
+    texto +="<tr><td>$V_{swr} \\text{ em curto para frequencia mínima: }$</td><td>$"+Vswr1curto[0].toFixed(4)+"\\;\\; $</td></tr>";
+    texto += "</table>";
     
     
-    var rtable = $("#respostas").find("table");
-    rtable.html(texto);
-
-    
+    document.getElementById("respostas").innerHTML = texto;
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub,"respostas"]);
     
     
     var texto2 = "";
     var carta2 = new CartaSmith(649, 649, 1196-648, "desenho2", "fundo");
+    texto2 += "<table>";
+    texto2 += "<caption>Segunda Solução</caption>";
+    texto2 += "<tr><td>$\\text{Comprimento de Onda: }$</td><td>$" + lambda.toFixed(4) + "\\;m $</td></tr>";
+    texto2 += "<tr><td>$\\text{Impedância Normalizada: }$</td><td>$" + ZLNorm.re.toFixed(4) +" + j\\;" + ZLNorm.im.toFixed(4) + "$</td></tr>";
     carta2.desenharRetaZNorm(ZLNorm);
     carta2.desenharPontoZNorm(ZLNorm, "zL");
     texto2 += "<tr><td>$\\text{Admitância Normalizada: }$</td><td>$" + YLNorm.re.toFixed(4) +" + j\\;" + YLNorm.im.toFixed(4) + "$</td></tr>";
@@ -293,8 +278,18 @@ function calcular() {
     carta2.desenharPontoZNorm(math.complex(1, Imy2), "Parte Real 1");
     carta2.setCor("#FF33FF");
     carta2.interpolarZ(math.complex(1, Imy2), math.complex(1, 0));
+    texto2 += "<tr><td>$\\text{Distância do Toco à carga: }$</td><td>$" + x2.toFixed(4) +"\\;m $</td></tr>";
+    texto2 += "<tr><td>$\\text{Comprimento do Toco em aberto: }$</td><td>$" + comp1aberto.toFixed(4) +"\\;m $</td></tr>";
+    texto2 += "<tr><td>$\\text{Comprimento do Toco em curto: }$</td><td>$" + comp1curto.toFixed(4) +"\\;m $</td></tr>";
+    texto2 +="<tr><td>$V_{swr} \\text{ em aberto para frequencia máxima: }$</td><td>$"+Vswr2aberto[quantIter].toFixed(4)+"\\;\\; $</td></tr>";
+    texto2 +="<tr><td>$V_{swr} \\text{ em aberto para frequencia mínima: }$</td><td>$"+Vswr2aberto[0].toFixed(4)+"\\;\\; $</td></tr>";
+    texto2 +="<tr><td>$V_{swr} \\text{ em curto para frequencia máxima: }$</td><td>$"+Vswr2curto[quantIter].toFixed(4)+"\\;\\; $</td></tr>";
+    texto2 +="<tr><td>$V_{swr} \\text{ em curto para frequencia mínima: }$</td><td>$"+Vswr2curto[0].toFixed(4)+"\\;\\; $</td></tr>";
+    texto2 += "</table>";
     
-    MathJax.Hub.Queue(["Typeset",MathJax.Hub,"respostas"]);
+    
+    document.getElementById("respostas2").innerHTML = texto2;
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub,"respostas2"]);
 
     
     var dadosVswr1a = {
@@ -351,6 +346,4 @@ function calcular() {
 
     
 }
-
-
 

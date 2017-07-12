@@ -1,28 +1,13 @@
 * {
     text-align: center;
 }
-.saida  td:nth-child(1) {
-	text-align: left;
-}
-.saida  td:nth-child(2) {
-	text-align: center;
-	width: 300
-}
-.saida  td:nth-child(3) {
-	text-align: center;
-	width: 300;
-}
-.entrada td:nth-child(1) {
+
+td:nth-child(1) {
     text-align: right;
 }
 
-.entrada  td:nth-child(2) {
+td:nth-child(2) {
     text-align: left;
-}
-
-.ghost{
-display: none;
-visibility: hidden;
 }
 
 table {
